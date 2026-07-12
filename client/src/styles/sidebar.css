@@ -1,0 +1,278 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   SIDEBAR — Lost & Found NG
+   Desktop: fixed left panel | Mobile: slide-in drawer + bottom nav
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+
+  background: #fff;
+  border-right: 1px solid #e7ebf3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px 14px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 99px;
+}
+
+/* ── logo ────────────────────────────────────────────────────────────── */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1B3FA0, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1B3FA0;
+  line-height: 1.1;
+}
+
+/* ── nav links ───────────────────────────────────────────────────────── */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-links a {
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all .15s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar-links a svg {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.sidebar-links a:hover {
+  background: #f0f4ff;
+  color: #1B3FA0;
+}
+
+.active-link {
+  background: #1B3FA0 !important;
+  color: white !important;
+  box-shadow: 0 4px 14px rgba(27, 63, 160, .22);
+}
+
+/* ── badge (for match count etc) ────────────────────────────────────── */
+.sidebar-badge {
+  margin-left: auto;
+  background: #F07C1E;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 20px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ── bottom section ──────────────────────────────────────────────────── */
+.sidebar-bottom {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #eef2f7;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  background: #fff1f2;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.logout-btn:hover {
+  background: #ffe4e6;
+}
+
+/* ── mobile hamburger button (shown in header on mobile) ────────────── */
+.mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #334155;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLET (1024px) — narrower sidebar
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+    padding: 16px 10px;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 14px;
+  }
+
+  .sidebar-links a {
+    font-size: 13px;
+    height: 42px;
+    gap: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOBILE (768px) — sidebar becomes a slide-in drawer
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 260px;
+    transform: translateX(-100%);
+    /* hidden by default */
+    z-index: 300;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, .12);
+  }
+
+  .sidebar.sidebar--open {
+    transform: translateX(0);
+    /* shown when toggled */
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* bottom nav bar */
+  .mobile-bottom-nav {
+    display: flex !important;
+  }
+}
+
+/* ── MOBILE BOTTOM NAV ───────────────────────────────────────────────── */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #fff;
+  border-top: 1px solid #e7ebf3;
+  z-index: 200;
+  padding: 0 8px;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, .06);
+}
+
+.mob-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: none;
+  background: none;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  text-decoration: none;
+  min-width: 52px;
+}
+
+.mob-nav-item svg {
+  font-size: 20px;
+}
+
+.mob-nav-item.active,
+.mob-nav-item:hover {
+  color: #1B3FA0;
+  background: #f0f4ff;
+}
+
+/* ── sidebar close btn (mobile drawer) ──────────────────────────────── */
+.sidebar-close-btn {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .sidebar-close-btn {
+    display: flex;
+  }
+}

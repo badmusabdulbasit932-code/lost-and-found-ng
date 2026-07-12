@@ -1,0 +1,534 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+}
+
+/* BODY */
+
+.discover-body{
+  display:flex;
+  gap:22px;
+  padding:24px;
+  align-items:flex-start;
+}
+
+/* MAIN */
+
+.discover-main{
+  flex:1;
+}
+
+/* HERO */
+
+.discover-hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:24px;
+}
+
+.discover-hero h1{
+  font-size:28px;
+  font-weight:800;
+  color:#111827;
+  margin-bottom:8px;
+}
+
+.discover-hero p{
+  color:#6b7280;
+  font-size:14px;
+}
+
+.view-btn{
+  height:44px;
+  padding:0 18px;
+  border:none;
+  border-radius:12px;
+  background:white;
+  border:1px solid #e5e7eb;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* SEARCH */
+
+.big-search-box{
+  background:white;
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 150px;
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.search-input-box{
+  height:54px;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 16px;
+  color:#9ca3af;
+}
+
+.search-input-box input{
+  width:100%;
+  border:none;
+  outline:none;
+  background:none;
+  font-size:14px;
+}
+
+.big-search-btn{
+  border:none;
+  border-radius:14px;
+  background:#2563eb;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+/* RESULTS */
+
+.results-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.results-row p{
+  font-size:14px;
+  color:#6b7280;
+}
+
+.results-row span{
+  font-size:13px;
+  color:#9ca3af;
+}
+
+/* FILTERS */
+
+.filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.filter-pill{
+  height:40px;
+  padding:0 16px;
+  border:none;
+  border-radius:12px;
+  background:white;
+  border:1px solid #e5e7eb;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.active-pill{
+  background:#2563eb;
+  color:white;
+  border:none;
+}
+
+/* GRID */
+
+.discover-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+/* CARD */
+
+.discover-card{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+}
+
+.discover-image{
+  position:relative;
+}
+
+.discover-image img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+
+.discover-img-placeholder{
+  width:100%;
+  height:210px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#eef1f6;
+  color:#94a3b8;
+}
+
+.discover-empty{
+  grid-column:1/-1;
+
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+
+  padding:70px 24px;
+  text-align:center;
+
+  color:#94a3b8;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.discover-empty h3{
+  color:#111827;
+  font-size:20px;
+  font-weight:700;
+}
+
+.discover-empty p{
+  color:#6b7280;
+  font-size:14px;
+}
+
+.discover-grid.list-view{
+  grid-template-columns:1fr;
+}
+
+.discover-grid.list-view .discover-card{
+  display:flex;
+}
+
+.discover-grid.list-view .discover-image,
+.discover-grid.list-view .discover-image img,
+.discover-grid.list-view .discover-img-placeholder{
+  width:220px;
+  height:auto;
+  flex-shrink:0;
+}
+
+.discover-grid.list-view .discover-card-content{
+  flex:1;
+}
+
+.save-btn{
+  position:absolute;
+  top:14px;
+  right:14px;
+
+  width:36px;
+  height:36px;
+
+  border:none;
+  border-radius:50%;
+
+  background:white;
+  color:#6b7280;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+
+  transition:.2s;
+}
+
+.save-btn.saved{
+  background:#fee2e2;
+  color:#ef4444;
+}
+
+.mini-avatars{
+  display:flex;
+  align-items:center;
+}
+
+.verified-dot{
+  background:#dcfce7;
+  color:#16a34a;
+
+  padding:5px 10px;
+
+  border-radius:999px;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+/* BADGES
+   NOTE: scoped under .discover-body so these class names (shared with
+   other pages, e.g. reports.css) never leak across routes. */
+
+.discover-body .card-badges{
+  position:absolute;
+  top:14px;
+  left:14px;
+  right:14px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  max-width:calc(100% - 28px);
+}
+
+.discover-body .lost-badge,
+.discover-body .reward-badge,
+.discover-body .found-badge{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  box-sizing:border-box;
+}
+
+.discover-body .lost-badge{
+  background:#ef4444;
+  color:white;
+}
+
+.discover-body .reward-badge{
+  background:#f97316;
+  color:white;
+}
+
+.discover-body .found-badge{
+  /* was previously position:absolute here, which duplicated
+     .card-badges' own absolute positioning and made this badge
+     pop out of the flex row and overlap the reward badge. It now
+     stays as a normal flex child like .lost-badge. */
+  background:white;
+  color:#111827;
+  border:1px solid #e5e7eb;
+}
+
+.discover-body .match-badge{
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  left:14px;
+  background:white;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  width:fit-content;
+  margin-left:auto;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:calc(100% - 28px);
+}
+
+/* CONTENT */
+
+.discover-card-content{
+  padding:18px;
+}
+
+.card-title-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.card-title-row h3{
+  font-size:20px;
+  color:#111827;
+}
+
+.card-category{
+  background:#f3f4f6;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+}
+
+.discover-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#6b7280;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.card-footer{
+  margin-top:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-link-btn{
+  border:none;
+  background:none;
+  color:#2563eb;
+  font-weight:700;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* RIGHT */
+
+.discover-right{
+  width:260px;
+}
+
+.smart-card,
+.report-another{
+  background:white;
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.smart-card h3{
+  margin-bottom:16px;
+}
+
+.match-item{
+  background:#f8fafc;
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:14px;
+}
+
+.match-item h4{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.match-item p{
+  font-size:12px;
+  color:#9ca3af;
+  margin-bottom:12px;
+}
+
+.match-item button{
+  width:100%;
+  height:38px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* REPORT */
+
+.report-another{
+  text-align:center;
+  background:#fff7ed;
+}
+
+.plus-circle{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#fed7aa;
+  color:#f97316;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:28px;
+  margin:0 auto 14px;
+}
+
+.report-another h3{
+  margin-bottom:10px;
+}
+
+.report-another p{
+  font-size:13px;
+  color:#9ca3af;
+  margin-bottom:16px;
+}
+
+.report-another button{
+  width:100%;
+  height:44px;
+  border:none;
+  border-radius:12px;
+  background:#f97316;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+  .discover-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:1000px){
+
+  .discover-right{
+    display:none;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .discover-body{
+    padding:18px;
+  }
+
+  .discover-hero{
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .big-search-box{
+    grid-template-columns:1fr;
+  }
+
+}

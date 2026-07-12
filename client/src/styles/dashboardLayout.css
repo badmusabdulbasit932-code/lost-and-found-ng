@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   DASHBOARD LAYOUT — Lost & Found NG
+   Fixes: overflow, responsiveness, mobile sidebar, desktop spacing
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── base shell ─────────────────────────────────────────────────────── */
+.dashboard-layout {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.dashboard-right {
+  margin-left: 240px;
+  /* only on desktop */
+  width: calc(100% - 240px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 24px;
+}
+
+/* ── mobile overlay (behind open mobile sidebar) ───────────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* tablet: tighten content padding */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    padding: 20px 20px;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* mobile: sidebar becomes a drawer, content full width */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-content {
+    padding: 16px 14px 80px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dashboard-right {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* 80px for bottom nav */
+}

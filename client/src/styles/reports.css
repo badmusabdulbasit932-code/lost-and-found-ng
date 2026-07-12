@@ -1,0 +1,1038 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+.reports-page{
+  padding:28px;
+  background:#f6f7fb;
+  min-height:100vh;
+}
+
+/* TOP */
+
+.reports-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:28px;
+}
+
+.reports-top h1{
+  font-size:42px;
+  font-weight:800;
+  color:#111827;
+  margin-bottom:8px;
+}
+
+.reports-top p{
+  color:#6b7280;
+  font-size:16px;
+}
+
+.top-buttons{
+  display:flex;
+  gap:14px;
+}
+
+.export-btn,
+.new-report-btn{
+  height:48px;
+  padding:0 20px;
+  border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.export-btn{
+  background:white;
+  border:1px solid #e5e7eb;
+}
+
+.new-report-btn{
+  background:#ff7a1a;
+  border:none;
+  color:white;
+}
+
+/* STATS */
+
+.reports-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-bottom:24px;
+}
+
+.stat-card{
+  background:white;
+  border-radius:18px;
+  border:1px solid #eceff3;
+  padding:24px;
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.stat-icon{
+  width:56px;
+  height:56px;
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
+}
+
+.blue{
+  background:#dbeafe;
+  color:#2563eb;
+}
+
+.green{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.orange{
+  background:#ffedd5;
+  color:#f97316;
+}
+
+.purple{
+  background:#f3e8ff;
+  color:#9333ea;
+}
+
+.stat-card span{
+  color:#6b7280;
+  font-size:14px;
+}
+
+.stat-card h2{
+  font-size:34px;
+  margin-top:4px;
+}
+
+/* FILTER */
+
+.reports-filter-bar{
+  background:white;
+  border:1px solid #eceff3;
+  border-radius:20px;
+  padding:16px;
+
+  display:flex;
+  gap:14px;
+  margin-bottom:26px;
+}
+
+.reports-search{
+  flex:1;
+  height:52px;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:0 16px;
+  color:#9ca3af;
+}
+
+.reports-search input{
+  width:100%;
+  border:none;
+  outline:none;
+  background:none;
+}
+
+.reports-filter-bar select{
+  height:52px;
+  padding:0 18px;
+  border-radius:14px;
+  border:1px solid #e5e7eb;
+  background:white;
+  cursor:pointer;
+}
+
+.filter-icon-btn{
+  width:52px;
+  border:none;
+  border-radius:14px;
+  background:white;
+  border:1px solid #e5e7eb;
+  cursor:pointer;
+}
+
+/* GRID */
+
+.reports-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+/* CARD */
+
+.report-card{
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid #eceff3;
+}
+
+.reports-page .report-image{
+  height:200px;
+  background:#ececf3;
+  position:relative;
+  overflow:hidden;
+}
+
+.report-preview-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.report-img-placeholder{
+  width:100%;
+  height:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#94a3b8;
+  background:#eef1f6;
+}
+
+/* BADGES
+   NOTE: scoped under .reports-page so these class names (shared with
+   discover.css/report-details.css) never leak across routes.
+   .lost-badge/.found-badge sit top-LEFT and .matched-badge sits
+   top-RIGHT so the two badges never overlap when both are shown. */
+
+.reports-page .matched-badge,
+.reports-page .lost-badge,
+.reports-page .found-badge{
+  position:absolute;
+  top:16px;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+  max-width:calc(100% - 32px);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  box-sizing:border-box;
+}
+
+.reports-page .lost-badge,
+.reports-page .found-badge{
+  left:16px;
+}
+
+.reports-page .matched-badge{
+  right:16px;
+  background:#ffedd5;
+  color:#f97316;
+}
+
+.reports-page .lost-badge{
+  background:#dbeafe;
+  color:#2563eb;
+}
+
+.reports-page .found-badge{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+/* STATUS PILL — read-only badge reflecting report.status */
+.status-pill{
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  text-transform:capitalize;
+}
+.status-pill--open{
+  background:#eef2ff;
+  color:#1B3FA0;
+}
+.status-pill--matched{
+  background:#ffedd5;
+  color:#f97316;
+}
+.status-pill--resolved{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.mark-resolved-btn{
+  padding:5px 12px;
+  border-radius:999px;
+  border:1.5px solid #16a34a;
+  background:#fff;
+  color:#16a34a;
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s, color .15s;
+}
+.mark-resolved-btn:hover{
+  background:#16a34a;
+  color:#fff;
+}
+
+/* CONTENT */
+
+.report-content{
+  padding:18px;
+}
+
+.category-pill{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f3f4f6;
+  color:#6b7280;
+  font-size:11px;
+  margin-bottom:14px;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  box-sizing:border-box;
+}
+
+.report-content h3{
+  font-size:24px;
+  color:#111827;
+  margin-bottom:14px;
+}
+
+.report-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#6b7280;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+/* CONFIDENCE */
+
+.confidence-row{
+  margin-top:18px;
+}
+
+.confidence-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.confidence-top span{
+  font-size:11px;
+  color:#6b7280;
+  font-weight:700;
+}
+
+.progress-bar{
+  width:100%;
+  height:7px;
+  background:#e5e7eb;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:#2563eb;
+}
+
+.w85{
+  width:85%;
+}
+
+.w40{
+  width:40%;
+}
+
+.w92{
+  width:92%;
+}
+
+/* BOTTOM */
+
+.card-bottom{
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid #eceff3;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-bottom small{
+  font-size:11px;
+  color:#6b7280;
+}
+
+.card-bottom h4{
+  font-size:28px;
+  color:#f97316;
+  margin-top:6px;
+}
+
+.card-actions{
+  display:flex;
+  gap:10px;
+}
+
+.card-actions button{
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:10px;
+  background:#f8fafc;
+  cursor:pointer;
+}
+
+/* FOOT */
+
+.reports-footer-row{
+  margin-top:34px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.reports-footer-row p{
+  color:#6b7280;
+}
+
+.pagination{
+  display:flex;
+  gap:10px;
+}
+
+.pagination button{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  background:white;
+  cursor:pointer;
+}
+
+.active-page{
+  background:#2563eb !important;
+  color:white;
+  border:none !important;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+  .reports-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .reports-stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .reports-page{
+    padding:18px;
+  }
+
+  .reports-grid{
+    grid-template-columns:1fr;
+  }
+
+  .reports-stats{
+    grid-template-columns:1fr;
+  }
+
+  .reports-top{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .reports-filter-bar{
+    flex-direction:column;
+  }
+
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.report-modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.65);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  z-index:9999;
+
+  backdrop-filter:blur(6px);
+}
+
+.report-modal{
+  position:relative;
+
+  width:100%;
+  max-width:520px;
+
+  background:#ffffff;
+
+  border-radius:28px;
+
+  padding:30px;
+
+  box-shadow:
+  0 30px 80px rgba(15,23,42,0.25);
+
+  animation:modalFade .25s ease;
+}
+
+@keyframes modalFade{
+
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.96);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+
+}
+
+.modal-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+
+.modal-top h2{
+  font-size:30px;
+  font-weight:800;
+  color:#0f172a;
+}
+
+.modal-top button{
+  width:42px;
+  height:42px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#f1f5f9;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  font-size:20px;
+
+  color:#64748b;
+
+  transition:.2s;
+}
+
+.modal-top button:hover{
+  background:#e2e8f0;
+  color:#0f172a;
+}
+
+.modal-body{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  
+}
+
+/* The type/matched badges are reused here from the card view, where they
+   are position:absolute overlays on an image. Inside the modal they sit
+   in normal flow next to the category pill, so their absolute positioning
+   must be cancelled here or they'd fly out to the corner of the modal
+   (or even the overlay) instead of sitting inline. */
+.modal-badges{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+}
+
+.modal-badges .lost-badge,
+.modal-badges .found-badge,
+.modal-badges .matched-badge{
+  position:static;
+  max-width:100%;
+}
+
+.modal-status{
+  width:max-content;
+
+  padding:8px 16px;
+
+  border-radius:999px;
+
+  background:#dcfce7;
+  color:#15803d;
+
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+.modal-body h3{
+  font-size:34px;
+  line-height:1.2;
+  font-weight:800;
+  color:#0f172a;
+}
+
+.modal-body p{
+  color:#64748b;
+  line-height:1.7;
+  font-size:15px;
+}
+
+.modal-info{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+
+  margin-top:10px;
+}
+
+.modal-info div{
+  background:#f8fafc;
+
+  border:1px solid #e2e8f0;
+
+  border-radius:18px;
+
+  padding:16px 18px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.modal-info strong{
+  color:#0f172a;
+  font-size:14px;
+}
+
+.modal-info span{
+  color:#2563eb;
+  font-weight:700;
+  text-align:right;
+}
+
+/* =========================
+   MODAL — close btn / image / description / rows / reward
+   (current JSX names — kept alongside the older .modal-info/.modal-top
+   rules above so neither the view nor edit modal renders unstyled)
+========================= */
+
+.modal-close-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+
+  width:40px;
+  height:40px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#f1f5f9;
+  color:#64748b;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.modal-close-btn:hover{
+  background:#e2e8f0;
+  color:#0f172a;
+}
+
+.modal-image{
+  width:100%;
+  height:220px;
+
+  object-fit:cover;
+  border-radius:18px;
+
+  margin-bottom:18px;
+}
+
+.modal-description{
+  color:#64748b;
+  line-height:1.7;
+  font-size:14px;
+
+  margin:10px 0 18px;
+}
+
+.modal-rows{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+
+  margin-bottom:18px;
+}
+
+.modal-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:16px;
+
+  padding:14px 16px;
+
+  color:#2563eb;
+  font-size:18px;
+}
+
+.modal-row small{
+  display:block;
+  color:#94a3b8;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:2px;
+}
+
+.modal-row p{
+  color:#0f172a;
+  font-size:14px;
+  font-weight:600;
+}
+
+.modal-reward{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:16px;
+
+  padding:16px 18px;
+}
+
+.modal-reward small{
+  display:block;
+  color:#c2410c;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.5px;
+  margin-bottom:4px;
+}
+
+.modal-reward h3{
+  color:#c2410c;
+  font-size:24px;
+  font-weight:800;
+}
+
+/* =========================
+   EDIT MODAL
+========================= */
+
+.edit-modal{
+  max-width:560px;
+  max-height:88vh;
+  overflow-y:auto;
+}
+
+.edit-modal-title{
+  font-size:26px;
+  font-weight:800;
+  color:#0f172a;
+
+  margin-bottom:22px;
+}
+
+.edit-modal-form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+
+  margin-bottom:24px;
+}
+
+.report-form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.report-form-group label{
+  font-size:13px;
+  font-weight:700;
+  color:#374151;
+}
+
+.report-form-group input,
+.report-form-group select,
+.report-form-group textarea{
+  width:100%;
+
+  border:1.5px solid #e2e8f0;
+  border-radius:14px;
+
+  padding:12px 16px;
+
+  font-size:14px;
+  font-family:inherit;
+
+  outline:none;
+  transition:.2s;
+}
+
+.report-form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.report-form-group input:focus,
+.report-form-group select:focus,
+.report-form-group textarea:focus{
+  border-color:#2563eb;
+}
+
+.edit-modal-actions{
+  display:flex;
+  gap:12px;
+}
+
+.edit-modal-actions .back-step-btn{
+  flex:1;
+
+  height:52px;
+
+  border:1.5px solid #e2e8f0;
+  border-radius:14px;
+
+  background:white;
+  color:#374151;
+
+  font-weight:700;
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.edit-modal-actions .back-step-btn:hover{
+  background:#f8fafc;
+}
+
+.edit-modal-actions .continue-btn{
+  flex:1;
+
+  height:52px;
+
+  border:none;
+  border-radius:14px;
+
+  background:#2563eb;
+  color:white;
+
+  font-weight:700;
+  cursor:pointer;
+
+  box-shadow:0 10px 20px rgba(37,99,235,0.25);
+
+  transition:.2s;
+}
+
+.edit-modal-actions .continue-btn:hover{
+  background:#1d4ed8;
+}
+
+/* =========================
+   EMPTY STATE (current JSX name)
+========================= */
+
+.reports-empty{
+  background:white;
+
+  border-radius:24px;
+
+  padding:70px 20px;
+
+  text-align:center;
+
+  border:1px solid #e2e8f0;
+}
+
+.empty-icon-box{
+  width:76px;
+  height:76px;
+
+  margin:0 auto 20px;
+
+  border-radius:20px;
+
+  background:#eff6ff;
+  color:#2563eb;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.reports-empty h3{
+  font-size:24px;
+  color:#0f172a;
+  font-weight:800;
+
+  margin-bottom:10px;
+}
+
+.reports-empty p{
+  color:#64748b;
+}
+
+/* =========================
+   EDIT
+========================= */
+
+.edit-row{
+  display:flex;
+  gap:10px;
+
+  margin-bottom:10px;
+}
+
+.edit-input{
+  flex:1;
+
+  height:48px;
+
+  border:1px solid #dbe4f0;
+  border-radius:14px;
+
+  padding:0 16px;
+
+  font-size:15px;
+  outline:none;
+}
+
+.edit-input:focus{
+  border-color:#2563eb;
+}
+
+.save-btn{
+  border:none;
+
+  padding:0 18px;
+
+  border-radius:14px;
+
+  background:#2563eb;
+  color:white;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty-state{
+  background:white;
+
+  border-radius:24px;
+
+  padding:60px 20px;
+
+  text-align:center;
+
+  border:1px solid #e2e8f0;
+}
+
+.empty-state h3{
+  font-size:28px;
+  color:#0f172a;
+
+  margin-bottom:10px;
+}
+
+.empty-state p{
+  color:#64748b;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.reports-toast{
+  position:fixed;
+  top:30px;
+  right:30px;
+
+  background:#0f172a;
+  color:white;
+
+  padding:16px 22px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  z-index:99999;
+
+  box-shadow:
+  0 20px 50px rgba(15,23,42,0.3);
+}

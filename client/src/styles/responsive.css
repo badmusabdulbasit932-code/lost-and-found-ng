@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES — Lost & Found NG
+   Applied globally on top of all page styles.
+   Breakpoints: 1200 | 1024 | 860 | 768 | 480 | 360
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── prevent any element from causing horizontal scroll ────────────── */
+* { max-width: 100%; }
+img, video, iframe, table { max-width: 100%; }
+
+/* ═══════════════ DASHBOARD PAGE ══════════════════════════════════════ */
+.dashboard-page { overflow-x: hidden; }
+
+/* stats grid: 4 → 2 → 1 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* dashboard two-col layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid { grid-template-columns: 1fr 280px; }
+}
+@media (max-width: 860px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════ REPORTS PAGE ════════════════════════════════════════ */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1100px) { .reports-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px)  { .reports-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ MATCHES PAGE ════════════════════════════════════════ */
+.matches-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  gap: 0;
+  min-height: 70vh;
+}
+
+@media (max-width: 1100px) {
+  .matches-layout { grid-template-columns: 180px 1fr; }
+  .matches-evidence { display: none; }
+}
+@media (max-width: 768px) {
+  .matches-layout { grid-template-columns: 1fr; }
+  .matches-filter-panel { display: none; }
+}
+
+/* ═══════════════ MESSAGES PAGE ═══════════════════════════════════════ */
+.messages-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 240px;
+  min-height: 70vh;
+}
+
+@media (max-width: 1100px) {
+  .messages-layout { grid-template-columns: 260px 1fr; }
+  .messages-item-panel { display: none; }
+}
+@media (max-width: 768px) {
+  .messages-layout { grid-template-columns: 1fr; }
+  .messages-list   { display: none; }
+  .messages-list.active { display: block; }
+  .messages-chat   { display: none; }
+  .messages-chat.active { display: flex; flex-direction: column; }
+}
+
+/* ═══════════════ PROFILE PAGE ════════════════════════════════════════ */
+.prof-overview {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .prof-overview     { grid-template-columns: 1fr; }
+  .prof-edit-grid    { grid-template-columns: 1fr; }
+  .prof-form-grid    { grid-template-columns: 1fr; }
+  .prof-sec-grid     { grid-template-columns: 1fr; }
+  .prof-notifs-grid  { grid-template-columns: 1fr; }
+  .prof-hero-content {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .prof-hero-stats { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  .prof-hero-content { padding: 0 14px 18px; }
+  .prof-tabs         { overflow-x: auto; }
+  .prof-tab          { white-space: nowrap; padding: 12px 14px; font-size: 13px; }
+  .prof-hero-name    { font-size: 18px; }
+  .prof-hero-stats   { flex-wrap: wrap; }
+  .prof-hero-stat    { min-width: 80px; }
+}
+
+/* ═══════════════ SETTINGS PAGE ═══════════════════════════════════════ */
+.st-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .st-layout    { grid-template-columns: 1fr; }
+  .st-nav       {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px,1fr));
+    gap: 4px;
+  }
+  .st-user-card  { grid-column: 1 / -1; }
+  .st-nav-arrow  { display: none; }
+  .st-form-grid  { grid-template-columns: 1fr; }
+  .st-theme-grid { grid-template-columns: repeat(3,1fr); }
+}
+
+@media (max-width: 600px) {
+  .st-theme-grid  { grid-template-columns: 1fr 1fr; }
+  .st-font-options{ flex-direction: column; }
+}
+
+/* ═══════════════ SEARCH RESULTS PAGE ════════════════════════════════ */
+.sr-wrapper { overflow-x: hidden; }
+
+@media (max-width: 860px) {
+  .sr-sidebar     { display: none; }
+}
+
+/* ═══════════════ ADMIN DASHBOARD ════════════════════════════════════ */
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) { .admin-grid { grid-template-columns: 1fr 260px; } }
+@media (max-width: 860px)  { .admin-grid { grid-template-columns: 1fr; } }
+
+.admin-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px)  { .admin-charts { grid-template-columns: 1fr; } }
+
+/* ═══════════════ CREATE REPORT ═══════════════════════════════════════ */
+.create-report-container {
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .report-type-grid { grid-template-columns: 1fr !important; }
+  .report-form-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════ HOME PAGE ═══════════════════════════════════════════ */
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 60px 48px;
+}
+
+@media (max-width: 900px) {
+  .home-hero              { grid-template-columns: 1fr; padding: 40px 24px; }
+  .home-hero-visual       { display: none; }
+  .home-hero-title        { font-size: 36px !important; }
+}
+
+@media (max-width: 480px) {
+  .home-hero              { padding: 28px 16px; }
+  .home-hero-title        { font-size: 28px !important; }
+  .home-hero-btns         { flex-direction: column; }
+  .home-hero-btns button  { width: 100%; }
+}
+
+.home-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px)  { .home-features-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px)  { .home-features-grid { grid-template-columns: 1fr; } }
+
+.home-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) { .home-reports-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 768px)  { .home-reports-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px)  { .home-reports-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ REPORT DETAILS ═════════════════════════════════════ */
+.report-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) { .report-details-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ RECOVERY TRACKER ═══════════════════════════════════ */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}
+
+@media (max-width: 860px) { .tracker-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ SUCCESS STORIES ════════════════════════════════════ */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px)  { .stories-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px)  { .stories-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ AUTH PAGES ═════════════════════════════════════════ */
+.signin-page,
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  background: linear-gradient(135deg,#f0f4ff,#fff);
+}
+
+.signin-container,
+.signup-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ═══════════════ FOOTER ═════════════════════════════════════════════ */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 32px;
+}
+
+@media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px)  { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ MISC OVERFLOW FIXES ════════════════════════════════ */
+
+/* tables scroll horizontally on small screens */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { min-width: 600px; }
+
+/* cards never overflow */
+.card, .prof-card, .st-card, .sr-card { overflow: hidden; }
+
+/* long text truncation inside cards */
+.card h3, .prof-card h3, .st-card h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* inputs always full-width */
+input, select, textarea { max-width: 100%; box-sizing: border-box; }
+
+/* notification dropdown positioning on mobile */
+@media (max-width: 480px) {
+  .notif-dropdown {
+    width: calc(100vw - 28px) !important;
+    right: -60px !important;
+    left: auto !important;
+  }
+}
