@@ -468,7 +468,7 @@ function CreateReport() {
               <div className="image-upload-wrapper">
 
                 {/* URL input */}
-
+                {/* 
                 <div className="report-form-group">
 
                   <label>Paste Image URL</label>
@@ -483,11 +483,11 @@ function CreateReport() {
                     }}
                   />
 
-                </div>
+                </div> */}
 
-                <div className="upload-divider">
+                {/* <div className="upload-divider">
                   <span>OR</span>
-                </div>
+                </div> */}
 
                 {/* File upload — FIX: uses FileReader not createObjectURL */}
 
@@ -531,7 +531,7 @@ function CreateReport() {
                 )}
 
                 <p className="image-optional-note">
-                  Image is optional but improves match accuracy.
+                  Image is important to improves match accuracy.
                 </p>
 
               </div>

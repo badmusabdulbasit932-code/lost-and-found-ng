@@ -6,8 +6,8 @@ import {
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { useNotifications, NOTIF_META } from "../context/NotificationContext"
-import "../styles/header.css"
 import "../styles/notifications.css"
+import "../styles/header.css"
 
 export default function DashboardHeader() {
 

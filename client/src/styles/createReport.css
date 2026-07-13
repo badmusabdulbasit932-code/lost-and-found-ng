@@ -134,8 +134,8 @@ body {
 }
 
 .report-steps .step-circle {
-  width: 64px;
-  height: 64px;
+  height: 30px;
+  width: 30px;
   border-radius: 20px;
   background: #f3f4f6;
   color: #9ca3af;

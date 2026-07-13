@@ -137,15 +137,15 @@ function Home() {
         location === ""
           ? true
           : report.location
-              .toLowerCase()
-              .includes(location.toLowerCase())
+            .toLowerCase()
+            .includes(location.toLowerCase())
 
       const matchesCategory =
         category === ""
           ? true
           : report.category
-              .toLowerCase()
-              .includes(category.toLowerCase())
+            .toLowerCase()
+            .includes(category.toLowerCase())
 
       return (
         matchesTab &&
@@ -228,12 +228,6 @@ function Home() {
             onClick={() => navigate("/success-stories")}
           >
             Stories
-          </button>
-
-          <button
-            onClick={() => navigate("/support")}
-          >
-            Support
           </button>
 
         </div>
